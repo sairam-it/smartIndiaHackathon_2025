@@ -1,392 +1,128 @@
-# Smart India Hackathon 2025 🚀
+# SmartIndiaHackathon_2025 — Incredible India Travel Companion
 
-## Overview
+## Description
 
-**Smart India Hackathon 2025** is a technology-driven project developed to solve a real-world problem through innovation and software solutions.
+Incredible India is a full-stack web application built during Smart India Hackathon 2025 to help travellers discover destinations, plan trips, book local guides, chat with support, and keep travel safety checks. The site offers curated cultural and tourist destinations, itinerary planning, wishlist management, hotel and experience browsing, guide bookings, and basic safety monitoring features.
 
-This project focuses on building a practical, scalable, and user-friendly platform by combining modern frontend technologies, backend services, and efficient data management techniques.
+## Key Features
 
-The application is designed with a strong focus on usability, performance, and future scalability.
+- Browse curated destinations, experiences, and hotels
+- Create and manage trip plans and itineraries
+- Add/remove items to a wishlist
+- Register and sign in as a tourist or a guide
+- Book guides and manage bookings
+- In-app chat functionality for support/communication
+- Safety checks and alert scheduling for active trips
+- Guided flows for cultural destination details and bookings
 
----
+## Tech Stack
 
-# Problem Statement
+- Frontend: React (TypeScript) with Vite and Tailwind CSS
+- Backend: Node.js with Express
+- Database: MongoDB with Mongoose ODM
+- Auth: JSON Web Tokens (JWT)
+- Dev tools: Nodemon (backend), Vite dev server (frontend)
+- HTTP client: Axios (frontend)
 
-Many real-world challenges require intelligent digital solutions that can improve efficiency, accessibility, and decision-making.
+These technologies are confirmed from the project files `frontend/package.json` and `backend/package.json`.
 
-This project aims to address the problem by providing a reliable system that:
+## Repository Structure (high level)
 
-- Simplifies existing processes
-- Improves user accessibility
-- Reduces manual effort
-- Provides faster and efficient solutions
-- Creates a scalable technology platform
+- backend/: API server (Express, Mongoose)
+  - src/index.js — server entry
+  - src/routes/ — API routes (auth, bookings, trip plans, chat, wishlist, safety, plans)
+  - src/models/ — Mongoose models (User, TripPlan, Booking, Wishlist, etc.)
+  - guide/: extra guide-related controllers & routes
+- frontend/: React + TypeScript client (Vite)
+  - src/: React components, contexts, pages
+  - index.html, vite.config.ts, tailwind.config.js
 
----
+## API Endpoints (overview)
 
-# Proposed Solution
+The backend registers these top-level routes (see `backend/src/index.js`):
 
-The proposed solution provides a complete digital platform that connects users with an efficient and structured system.
+- `POST /api/auth` — authentication routes (register, login)
+- `GET/POST /api/wishlist` — wishlist management
+- `GET/POST /api/tripplans` — create and manage trip plans
+- `POST /api/chat` — chat interactions/support
+- `GET/POST /api/bookings` — booking guides and trips
+- `GET/POST /api/plans` — itinerary / plans management
+- `POST /api/safety` — safety checks and alerts
+- `GET/POST /api/guide` — guide profiles and guide bookings
 
-The application includes:
+Refer to the route files in `backend/src/routes/` for exact request shapes and additional endpoints.
 
-- User-friendly interface
-- Secure backend architecture
-- Organized data handling
-- API-based communication
-- Scalable system design
+## Environment Variables
 
-The project follows a modular approach, making it easier to maintain and extend with additional features in the future.
+Create a `.env` file in the `backend/` folder with at least the following variables:
 
----
+- `MONGO_URI` — MongoDB connection string
+- `JWT_SECRET` — secret for signing JWT tokens
+- `PORT` — (optional) port for the backend server (default 5000)
 
-# Features
+There may be other optional keys used by certain controllers (e.g., mailer credentials) — check `backend/src` and `guide/` controller files for details.
 
-## User Interface
+## Local Setup — Backend
 
-- Clean and responsive design
-- Easy navigation
-- Interactive components
-- User-friendly workflow
-- Optimized user experience
+Prerequisites: Node.js (v16+ recommended), MongoDB (local or Atlas)
 
-## Backend System
-
-- REST API architecture
-- Secure data processing
-- Server-side logic handling
-- Database integration
-- Scalable backend structure
-
-## General Features
-
-- Modular project structure
-- Maintainable codebase
-- Real-time communication
-- Efficient performance
-- Future-ready architecture
-
----
-
-# Technology Stack
-
-## Frontend
-
-- React.js
-- TypeScript
-- JavaScript
-- HTML5
-- CSS3
-- Tailwind CSS
-
-## Backend
-
-- Node.js
-- Express.js
-- REST APIs
-
-## Database
-
-- MongoDB / SQL Database
-
-## Tools
-
-- Git
-- GitHub
-- Visual Studio Code
-- Postman
-
----
-
-# Project Architecture
-
-```
-                    User
-
-                     |
-
-                     |
-
-              Frontend Application
-
-                     |
-
-                     |
-
-                Backend API
-
-                     |
-
-                     |
-
-                  Database
-
-                     |
-
-                     |
-
-                 Response
-```
-
----
-
-# Project Structure
-
-```
-smartIndiaHackathon_2025
-
-│
-├── frontend
-│
-│   ├── src
-│   ├── components
-│   ├── pages
-│   ├── assets
-│   └── package.json
-│
-│
-├── backend
-│
-│   ├── src
-│   ├── routes
-│   ├── controllers
-│   ├── models
-│   └── package.json
-│
-│
-├── README.md
-└── .gitignore
-
-```
-
----
-
-# Installation and Setup
-
-## Step 1: Clone Repository
-
-```bash
-git clone https://github.com/sairam-it/smartIndiaHackathon_2025.git
-```
-
-Move into the project directory:
-
-```bash
-cd smartIndiaHackathon_2025
-```
-
----
-
-# Backend Setup
-
-Navigate to backend folder:
+1. Open a terminal and install dependencies:
 
 ```bash
 cd backend
-```
-
-Install dependencies:
-
-```bash
 npm install
 ```
 
-Create `.env` file:
+2. Add `.env` with `MONGO_URI` and `JWT_SECRET`.
 
-```
-.env
-```
-
-Add required environment variables:
-
-```env
-PORT=5000
-
-DATABASE_URL=your_database_connection
-
-JWT_SECRET=your_secret_key
-```
-
-Start backend server:
+3. Start server (development):
 
 ```bash
-npm run dev
+npm run start
 ```
 
-Backend will start at:
+The server runs by default on `http://localhost:5000` unless you set `PORT` in `.env`.
 
-```
-http://localhost:5000
-```
+## Local Setup — Frontend
 
----
+Prerequisites: Node.js
 
-# Frontend Setup
-
-Open a new terminal.
-
-Navigate to frontend:
+1. Install dependencies and start dev server:
 
 ```bash
 cd frontend
-```
-
-Install dependencies:
-
-```bash
 npm install
-```
-
-Start frontend application:
-
-```bash
 npm run dev
 ```
 
-Frontend will start at:
+2. The Vite dev server will print the local URL (usually `http://localhost:5173`).
 
-```
-http://localhost:3000
-```
+To connect frontend to the local backend, update any API base URL configuration or environment usage in the frontend code to point to `http://localhost:5000/api`.
 
----
+## Development Tips
 
-# API Communication
+- Backend logging includes request logging in `backend/src/index.js`.
+- The backend uses a lightweight scheduler to run periodic safety checks (see `tripPlanController` import in `src/index.js`).
+- Frontend uses Tailwind CSS utilities and includes a `@tailwindcss/typography` plugin.
 
-The frontend communicates with the backend using REST APIs.
+## Contributing
 
-Example:
+Contributions are welcome. For quick fixes or features:
 
-```
-Frontend
-    |
-    |
-    ↓
-REST API
-    |
-    |
-    ↓
-Backend Server
-    |
-    |
-    ↓
-Database
-```
+1. Fork the repository and create a feature branch.
+2. Add tests where appropriate and verify the app runs locally (both frontend and backend).
+3. Open a pull request with a clear description of the change.
+
+## License
+
+This repository does not include an explicit open-source license file. Add a `LICENSE` file if you intend to make the project open source.
 
 ---
 
-# Environment Requirements
+If you want, I can also:
 
-Make sure the following are installed:
+- Add more detailed developer notes for specific endpoints.
+- Create a Postman collection or OpenAPI spec from the routes.
+- Add sample `.env.example` and start scripts to simplify setup.
 
-- Node.js
-- npm
-- Git
-- Database service
-
-Check versions:
-
-```bash
-node -v
-
-npm -v
-
-git --version
-```
-
----
-
-# Future Enhancements
-
-Future improvements planned:
-
-- AI-based feature improvements
-- Mobile application support
-- Cloud deployment
-- Advanced analytics
-- Performance optimization
-- Enhanced security features
-- Additional automation capabilities
-
----
-
-# Screenshots
-
-Add application screenshots here:
-
-```
-screenshots/
-```
-
-Example:
-
-```
-![Home Page](screenshots/home.png)
-```
-
----
-
-# Team
-
-## Smart India Hackathon 2025 Team
-
-Developed with the goal of creating innovative technology solutions for real-world challenges.
-
-Team Members:
-
-- K Manichandar
-- G Krishna Manohar
-- B Vishnu Vardan
-- P Sairam Goud
-
----
-
-# Contribution Guidelines
-
-Contributions are welcome.
-
-Steps to contribute:
-
-1. Fork the repository
-
-2. Create a new branch
-
-```bash
-git checkout -b feature-name
-```
-
-3. Commit your changes
-
-```bash
-git commit -m "Added new feature"
-```
-
-4. Push changes
-
-```bash
-git push origin feature-name
-```
-
-5. Create a Pull Request
-
----
-
-# License
-
-This project is developed as part of **Smart India Hackathon 2025**.
-
-It is intended for educational, research, and innovation purposes.
-
----
-
-# Contact
-
-GitHub:
-
-https://github.com/sairam-it
-
----
-
-## Thank You 🚀
-
-Building innovative solutions through technology.
+File created: README.md
